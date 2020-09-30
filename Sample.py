@@ -70,8 +70,7 @@ class DB:
                 else:
                     exit()
             
-        else:
-            prompt == "Age":     #primary branch that will find record according to the Age.
+        elif prompt == "Age":     #primary branch that will find record according to the Age.
             print("Enter Age:")
             x = str(input()).lower()
             count = 0
@@ -91,6 +90,31 @@ class DB:
                     exit()
             else:
                 print("Do you want to search again??[y/n]") #prompt to search again.
+                yn = str(input()).lower()
+                if yn=='y':
+                    self.find(data)
+                else:
+                    exit()
+        else:
+            print("Enter Home City:") #primary branch that will find record according to the Home city.
+            x = str(input()).lower()
+            count = 0
+            for row in  self.data[1:]:
+                if x in row:
+                    print(row)
+                    count +=1
+                else:
+                    continue
+            if count ==0:   #secondary nested condition if the search is unsuccessful
+                print("You Have entered wrong City")
+                print("Do you want to search again??[y/n]")
+                yn = str(input()).lower()
+                if yn=='y':
+                    self.find(data)
+                else:
+                    exit()
+            else:
+                print("Do you want to search again??[y/n]")   #prompt to search again.
                 yn = str(input()).lower()
                 if yn=='y':
                     self.find(data)
